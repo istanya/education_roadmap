@@ -1,41 +1,4 @@
-<!DOCTYPE HTML>
-
-{% extends "main.html" %}
-
-{% block head %}
-{{ super() }}
-
-
-
-
-{% endblock %}
-
-{% block content %}
-
-
-			<section id="three" class="wrapper align-center">
-				<div class="inner">
-
-						<h1>Входное тестирование</h1>
-
-						  <div class="quiz-container">
-							  <div id="quiz"></div>
-							</div>
-
-
-					</div>
-						<button id="previous">Назад</button>
-						<button id="next">Далее</button>
-						<button id="submit">Отправить</button>
-						<div id="results"></div>
-
-
-			</section>
-
-
-
-
-<script>(function(){
+(function(){
   // Functions
   function buildQuiz(){
     // variable to store the HTML output
@@ -139,8 +102,8 @@
   const quizContainer = document.getElementById('quiz_text');
   const resultsContainer = document.getElementById('results');
   const submitButton = document.getElementById('submit');
-  const myQuestions = '{{ quiz }}';
-  console.log(myQuestions);
+  var myQuestions = '{{ quiz }}';
+  console.log(myQuestions)
 
   // Kick things off
   buildQuiz();
@@ -159,5 +122,3 @@
   previousButton.addEventListener("click", showPreviousSlide);
   nextButton.addEventListener("click", showNextSlide);
 })();
-</script>
-{% endblock %}
