@@ -1,22 +1,17 @@
 <!DOCTYPE HTML>
-<!--
-	Projection by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
+
+
 <html>
 	<head>
-		<title>Projection by TEMPLATED</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
 	</head>
 	<body>
 
 		<!-- Header -->
 			<header id="header">
 				<div class="inner">
-					<a href="index.html" class="logo"><strong>Projection</strong> by TEMPLATED</a>
 					<nav id="nav">
 						<a href="index.html">Home</a>
 						<a href="generic.html">Generic</a>
@@ -30,33 +25,33 @@
 			<section id="banner">
 				<div class="inner">
 					<header>
-						<h1>Welcome to Projection</h1>
+						<h1>Добро пожаловать в страну Росатом</h1>
 					</header>
 
 					<div class="flex ">
 
 						<div>
-							<span class="icon fa-car"></span>
-							<h3>Aliquam</h3>
-							<p>Suspendisse amet ullamco</p>
+							<span class="icon fa-book"></span>
+							<h3>Учись</h3>
+							<p>Знания сила</p>
 						</div>
 
 						<div>
-							<span class="icon fa-camera"></span>
-							<h3>Elementum</h3>
-							<p>Class aptent taciti ad litora</p>
+							<span class="icon fa-graduation-cap"></span>
+							<h3>Мечтай</h3>
+							<p>Стремимся за знаниями</p>
 						</div>
 
 						<div>
-							<span class="icon fa-bug"></span>
-							<h3>Ultrices</h3>
-							<p>Nulla vitae mauris non felis</p>
+							<span class="icon fa-laptop"></span>
+							<h3>Вперед</h3>
+							<p>На шаг впереди</p>
 						</div>
 
 					</div>
 
 					<footer>
-						<a href="#" class="button">Get Started</a>
+						<a href="#" class="button">К знаниям</a>
 					</footer>
 				</div>
 			</section>
@@ -127,10 +122,10 @@
 			</footer>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='js/skel.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='js/util.js') }}"></script>
+			<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
 	</body>
 </html>
