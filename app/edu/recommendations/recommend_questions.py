@@ -23,13 +23,13 @@ class RecommendQuestions(BaseRecommend):
     def all_questions(self):
         return self.questions_df.index.tolist(), self.questions_df['question'].values.tolist()
 
-    def filter(self, skill):
+    def filter(self, skill, top_elem=5):
         index, quest = self.all_questions()
         skill = self.model.get_vector(skill)
         questions_lst_emb = []
         for q in quest:
             questions_lst_emb.append(self.model.get_vector(q))
-        top_indexes = self.get_top_recommendations(skill, quest, k=2)
+        top_indexes = self.get_top_recommendations(skill, questions_lst_emb, k=top_elem)
         question, index, answers = self.get_questionswith_answers(top_indexes)
         return question, index, answers
 

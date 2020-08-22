@@ -1,9 +1,8 @@
-from abc import ABC, abstractmethod
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 from app.edu.recommendations.embeddings import Elmo
 
-class BaseRecommend(ABC):
+class BaseRecommend:
     """ Базовый класс для рекомендаций """
 
     def __init__(self):
@@ -22,7 +21,3 @@ class BaseRecommend(ABC):
         top_k = np.array(scores).argsort()[-k:][::-1]
         return top_k
 
-
-    @abstractmethod
-    def get_(self, label):
-        ...
