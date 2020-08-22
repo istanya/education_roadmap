@@ -1,12 +1,9 @@
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
-from app.edu.recommendations.embeddings import Elmo
+
 
 class BaseRecommend:
     """ Базовый класс для рекомендаций """
-
-    def __init__(self):
-        self.model = Elmo()
 
     def get_cossimilarity(self, vector1, vector2):
         return 1 - cosine_similarity(vector1, vector2)

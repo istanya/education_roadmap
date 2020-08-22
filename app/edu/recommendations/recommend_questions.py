@@ -1,6 +1,6 @@
 import pandas as pd
 from app.edu.recommendations.base_recommend import BaseRecommend
-
+from app.edu.recommendations.embeddings import elmo_object
 
 class RecommendQuestions(BaseRecommend):
     """ Класс для рекомендаций вопросов для теста на основе знаний человека"""
@@ -25,10 +25,10 @@ class RecommendQuestions(BaseRecommend):
 
     def filter(self, skill, top_elem=5):
         index, quest = self.all_questions()
-        skill = self.model.get_vector(skill)
+        skill = elmo_object.get_vector(skill)
         questions_lst_emb = []
         for q in quest:
-            questions_lst_emb.append(self.model.get_vector(q))
+            questions_lst_emb.append(elmo_object.get_vector(q))
         top_indexes = self.get_top_recommendations(skill, questions_lst_emb, k=top_elem)
         question, index, answers = self.get_questionswith_answers(top_indexes)
         return question, index, answers

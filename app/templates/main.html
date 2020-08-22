@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+
+
+<html>
+
+	<head>
+         {% block head %}
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+        <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/skel.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/util.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+        {% endblock %}
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<nav id="nav">
+						<a href="index.html">МоиЗнания</a>
+						<a href="generic.html">МоиРекомендации</a>
+						<a href="elements.html">Войти</a>
+					</nav>
+					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+				</div>
+			</header>
+
+		<!-- Banner -->
+			<section id="banner">
+				<div class="inner">
+					<header>
+						<h1>Добро пожаловать в страну Росатом</h1>
+					</header>
+
+					<div class="flex ">
+
+						<div>
+							<span class="icon fa-book"></span>
+							<h3>Учись</h3>
+							<p>Знания сила</p>
+						</div>
+
+						<div>
+							<span class="icon fa-graduation-cap"></span>
+							<h3>Мечтай</h3>
+							<p>Стремимся за знаниями</p>
+						</div>
+
+						<div>
+							<span class="icon fa-laptop"></span>
+							<h3>Вперед</h3>
+							<p>На шаг впереди</p>
+						</div>
+
+					</div>
+
+					<footer>
+						<a href="#three" class="button">К знаниям</a>
+					</footer>
+				</div>
+			</section>
+
+
+		{% block content %}{% endblock %}
+{% block footer %}
+
+        <!-- Footer -->
+        <footer id="footer">
+				<div class="inner">
+					<div class="copyright">
+						&copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.
+					</div>
+
+				</div>
+        </footer>
+  {% endblock %}
+
+
+	</body>
+</html>
