@@ -21,3 +21,4 @@ class Elmo:
             embeddings_vector += self.get_vector(token)
         return embeddings_vector
 
+elmo_object = Elmo()
