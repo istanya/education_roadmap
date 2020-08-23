@@ -1,0 +1,21 @@
+<section id="recommend_courses" class="wrapper align-center">
+				<div class="inner">
+					<div class="flex flex-2">
+						{% for value in recommendations %}
+						<article>
+							<div class="image round">
+								<img src={{value.cover}} alt="Pic 01" />
+							</div>
+							<header>
+								<h3>{{value.name}}</h3>
+							</header>
+							<p>Название урока: {{value.title}}</p>
+							<footer>
+								<a href={{value.link}} class="button">Посмотреть</a>
+							</footer>
+						</article>
+						{% endfor %}
+
+					</div>
+				</div>
+			</section>

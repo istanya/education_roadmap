@@ -13,7 +13,7 @@
 {% block content %}
 
 
-			<section id="three" class="wrapper align-center">
+			<section id="recommend_test" style="display: hidden;" class="wrapper align-center">
 				<div class="inner">
 
 						<h2>Входное тестирование</h2>
@@ -23,17 +23,26 @@
 							</div>
 
 
-					</div>
 						<button id="previous">Назад</button>
 						<button id="next">Далее</button>
 						<button id="submit">Отправить</button>
 						<div id="results"></div>
-
-
+				</div>
 			</section>
 
+<script>
+show = '{{show}}';
+
+if(show === 0){
+      document.getElementById("recommend_test").style.display = "block";
+    }
+
+if(show === 1){
+      document.getElementById("recommend_courses").style.display = "block";
+    }
 
 
+</script>
 
 <script>(function(){
   // Functions
@@ -107,7 +116,19 @@
       }
 
     });
-	post("", {"wrong_questions": wrong_questions});
+	<!--post("", {"wrong_questions": wrong_questions});-->
+
+
+	postData('', {"wrong_questions": wrong_questions})
+  .then(data => {
+    data.text().then(function (text) {
+ document.getElementById('recommend_test').innerHTML = text;
+});
+  });
+
+  	document.getElementById("recommend_courses").style.display = "block";
+	document.getElementById("recommend_test").style.display = "display: hidden;";
+
     // show number of correct answers out of total
     resultsContainer.innerHTML = `${numCorrect} из ${myQuestions.length}`;
   }
@@ -166,7 +187,37 @@
 
 
 window.post = function(url, data) {
+
   return fetch(url, {method: "POST", body: JSON.stringify(data)});
 }
+
+// Example POST method implementation:
+async function postData(url = '', data = {}) {
+  // Default options are marked with *
+  const response = await fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  });
+  return response; // parses JSON response into native JavaScript objects
+}
+
+
+
 </script>
+
+
+
 {% endblock %}
+
+
+
+
