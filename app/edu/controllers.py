@@ -10,12 +10,17 @@ def education():
     mock_id = 5
     # quiz = RecommendQuestions().get_quiz(user_id=mock_id)
     quiz = [{'question': 'Как получить данные от пользователя?', 'correctAnswer': 2, 'answers':
-    {1: 'Использовать метод get()', 2: 'Использовать метод input()', 3: 'Использовать метод readLine()', 4: 'Использовать метод read()'}}]
-    return render_template('my_education.html', quiz=quiz)
+    {1: 'Использовать метод get()', 2: 'Использовать метод input()', 3: 'Использовать метод readLine()', 4: 'Использовать метод read()'}},
+            {'question': 'Как получить данные от пользователяwwww?', 'correctAnswer': 2, 'answers':
+                {1: 'Использовать метоsfsgд get()', 2: 'Использоватьsfsdf метод input()', 3: 'Использовать sfsdf readLine()',
+                 4: 'Использовать методddd read()'}}
+            ]
+    return render_template('my_education.html', quiz_questions=json.dumps(quiz))
 
 @module.route('/', methods=['POST'])
-def wrong_answers():
-    ...
+def wrong_question():
+    wrong_q = json.loads(request.data.decode())['wrong_questions']
+
     return render_template('my_education.html', recommendations='')
 
 

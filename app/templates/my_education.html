@@ -16,7 +16,7 @@
 			<section id="three" class="wrapper align-center">
 				<div class="inner">
 
-						<h1>Входное тестирование</h1>
+						<h2>Входное тестирование</h2>
 
 						  <div class="quiz-container">
 							  <div id="quiz"></div>
@@ -40,6 +40,7 @@
   function buildQuiz(){
     // variable to store the HTML output
     const output = [];
+
 
     // for each question...
     myQuestions.forEach(
@@ -79,6 +80,7 @@
 
     // keep track of user's answers
     let numCorrect = 0;
+    const wrong_questions = [];
 
     // for each question...
     myQuestions.forEach( (currentQuestion, questionNumber) => {
@@ -98,13 +100,16 @@
       }
       // if answer is wrong or blank
       else{
+      	wrong_questions.push(currentQuestion.question);
+
         // color the answers red
         answerContainers[questionNumber].style.color = 'red';
       }
-    });
 
+    });
+	post("", {"wrong_questions": wrong_questions});
     // show number of correct answers out of total
-    resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+    resultsContainer.innerHTML = `${numCorrect} из ${myQuestions.length}`;
   }
 
   function showSlide(n) {
@@ -136,11 +141,10 @@
   }
 
   // Variables
-  const quizContainer = document.getElementById('quiz_text');
+  const quizContainer = document.getElementById('quiz');
   const resultsContainer = document.getElementById('results');
   const submitButton = document.getElementById('submit');
-  const myQuestions = '{{ quiz }}';
-  console.log(myQuestions);
+  const myQuestions = {{ quiz_questions|safe }};
 
   // Kick things off
   buildQuiz();
@@ -159,5 +163,10 @@
   previousButton.addEventListener("click", showPreviousSlide);
   nextButton.addEventListener("click", showNextSlide);
 })();
+
+
+window.post = function(url, data) {
+  return fetch(url, {method: "POST", body: JSON.stringify(data)});
+}
 </script>
 {% endblock %}
